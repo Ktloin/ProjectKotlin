@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.bean.FindBean
@@ -23,15 +24,28 @@ class FindAdapter(context: Context, list: List<FindBean>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
-        holder?.tvName?.text=list.get(position).name
+        holder?.tvName?.text = list.get(position).name
         holder?.sdv?.setImageURI(list.get(position).bgPicture)
+        holder?.frame?.setOnClickListener{
+            litener?.OnItemClick(position)
+        }
     }
 
-    override fun getItemCount(): Int =list.size
+    override fun getItemCount(): Int = list.size
 
     class MyViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         var sdv = itemView!!.findViewById<SimpleDraweeView>(R.id.sdv) as SimpleDraweeView
         var tvName = itemView!!.findViewById<TextView>(R.id.tvName) as TextView
+        var frame = itemView!!.findViewById<FrameLayout>(R.id.fl) as FrameLayout
+    }
+
+    //定义接口回调
+    var litener:OnItemClickLitener?=null
+    interface OnItemClickLitener{
+        fun OnItemClick(position: Int)
+    }
+    fun setOnItemClickListener(litener: OnItemClickLitener){
+        this.litener=litener
     }
 
 }
