@@ -2,6 +2,7 @@ package com.bj.kotlinproject.fragment
 
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
+import android.widget.Toast
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.adapter.FindAdapter
 import com.bj.kotlinproject.base.BaseFragment
@@ -38,6 +39,12 @@ class FindFragment : BaseFragment<FindPresenter>(),FindView {
     override fun getFindData(findBean: List<FindBean>) {
         val adapter=FindAdapter(context,findBean)
         rv.adapter=adapter
+        adapter.setOnItemClickListener(object : FindAdapter.OnItemClickLitener{
+            override fun OnItemClick(position: Int) {
+                Toast.makeText(context,findBean.get(position).name,Toast.LENGTH_LONG).show()
 
+            }
+
+        })
     }
 }
