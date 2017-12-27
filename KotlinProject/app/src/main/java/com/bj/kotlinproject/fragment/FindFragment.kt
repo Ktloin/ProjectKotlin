@@ -1,14 +1,15 @@
 package com.bj.kotlinproject.fragment
 
-import android.util.Log
+import android.support.v7.widget.GridLayoutManager
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import com.bj.kotlinproject.R
+import com.bj.kotlinproject.adapter.FindAdapter
 import com.bj.kotlinproject.base.BaseFragment
 import com.bj.kotlinproject.bean.FindBean
 import com.bj.kotlinproject.presenter.FindPresenter
 import com.bj.kotlinproject.view.FindView
+import kotlinx.android.synthetic.main.fragment_find.*
+import kotlinx.android.synthetic.main.title_bar.*
 
 /**
  * Created by 郑文杰 on 2017/12/27.
@@ -19,8 +20,8 @@ class FindFragment : BaseFragment<FindPresenter>(),FindView {
     override fun setView(): Int = R.layout.fragment_find
 
     override fun initView(view: View) {
-        var text=view.findViewById<TextView>(R.id.tv) as TextView
-        text.text="哈哈哈"
+        tvTitle.text="Discover"
+        rv.layoutManager=GridLayoutManager(context,2)
 
     }
 
@@ -35,8 +36,8 @@ class FindFragment : BaseFragment<FindPresenter>(),FindView {
     }
 
     override fun getFindData(findBean: List<FindBean>) {
-        val name = findBean!!.get(0).name
-        Log.e("kk",name)
-        Toast.makeText(context,name, Toast.LENGTH_LONG).show()
+        val adapter=FindAdapter(context,findBean)
+        rv.adapter=adapter
+
     }
 }
