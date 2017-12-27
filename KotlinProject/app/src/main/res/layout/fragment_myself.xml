@@ -8,6 +8,7 @@
 
 
         <ImageView
+            android:id="@+id/bai_set"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:background="@mipmap/icon_setting"

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.activity.GKActivity
 import com.bj.kotlinproject.activity.HCActivity
+import com.bj.kotlinproject.activity.SetActivity
 import com.bj.kotlinproject.activity.YJActivity
 import kotlinx.android.synthetic.main.fragment_myself.view.*
 
@@ -22,10 +23,21 @@ class MySelfFragment  :Fragment(){
         val view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_myself, container, false)
 
 
+        initView(view)
+
+
+
+
+
+
+        return view
+    }
+
+    private fun initView(view: View) {
         view.bai_huancun.setOnClickListener(object : DialogInterface.OnClickListener, View.OnClickListener {
             override fun onClick(v: View?) {
 
-                var  intent = Intent(activity,HCActivity::class.java)
+                var intent = Intent(activity, HCActivity::class.java)
                 startActivity(intent)
 
             }
@@ -40,7 +52,7 @@ class MySelfFragment  :Fragment(){
         view.bai_jilu.setOnClickListener(object : DialogInterface.OnClickListener, View.OnClickListener {
             override fun onClick(v: View?) {
 
-                var  intent = Intent(activity,GKActivity::class.java)
+                var intent = Intent(activity, GKActivity::class.java)
                 startActivity(intent)
 
             }
@@ -54,7 +66,7 @@ class MySelfFragment  :Fragment(){
         view.bai_yijian.setOnClickListener(object : DialogInterface.OnClickListener, View.OnClickListener {
             override fun onClick(v: View?) {
 
-                var  intent = Intent(activity,YJActivity::class.java)
+                var intent = Intent(activity, YJActivity::class.java)
                 startActivity(intent)
 
             }
@@ -65,11 +77,19 @@ class MySelfFragment  :Fragment(){
 
         })
 
+        view.bai_set.setOnClickListener(object : DialogInterface.OnClickListener, View.OnClickListener {
+            override fun onClick(v: View?) {
 
+                var intent = Intent(activity, SetActivity::class.java)
+                startActivity(intent)
 
+            }
 
+            override fun onClick(dialog: DialogInterface?, which: Int) {
 
+            }
 
-        return view
+        })
+
     }
 }
