@@ -1,9 +1,6 @@
 package com.bj.kotlinproject.net
 
-import com.bj.kotlinproject.bean.FindBean
-import com.bj.kotlinproject.bean.FindListBean
-import com.bj.kotlinproject.bean.HomeBean
-import com.bj.kotlinproject.bean.HotBean
+import com.bj.kotlinproject.bean.*
 import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -28,4 +25,8 @@ interface ApiService {
     //热点 http://baobab.kaiyanapp.com/api/v3/ranklist?num=10&strategy=%s&udid=26868b32e808498db32fd51fb422d00175e179df&vc=83
     @GET("v3/ranklist")
     fun getHotData(@Query("num") num: Int, @Query("strategy") strategy: String, @Query("udid") udid: String,@Query("vc") vc: Int) :Flowable<List<HotBean>>
+
+    //搜索http://baobab.kaiyanapp.com/api/v1/search?num=10&query=%E4%BD%A0&start=10
+    @GET("v1/search")
+    fun getSearchData(@Query("num")num:Int,@Query("query")query:String,@Query("start")start:Int) : Flowable<SearchBean>
 }
