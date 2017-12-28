@@ -1,9 +1,7 @@
 package com.bj.kotlinproject.adapter
 
 import android.content.Context
-import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +13,9 @@ import com.bj.kotlinproject.bean.HomeBean
 /**
  * Created by 吴丽杰 on 2017/12/27.
  */
-class HomeAdapter(context: Context, list: List<HomeBean.IssueListBean.ItemListBean>) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+class HomeAdapter(context: Context, list: List<HomeBean>) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
     private var context: Context = context
-    private var list: List<HomeBean.IssueListBean.ItemListBean> = list
+    private var list: List<HomeBean> = list
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyViewHolder {
         var view = LayoutInflater.from(context).inflate(R.layout.home_item, parent, false)
@@ -26,8 +24,6 @@ class HomeAdapter(context: Context, list: List<HomeBean.IssueListBean.ItemListBe
 
     override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
         val bean = list?.get(position)
-        val title = bean?.data?.title
-
     }
 
     override fun getItemCount(): Int = list.size ?: 0

@@ -6,6 +6,8 @@ import com.bj.kotlinproject.R
 import com.bj.kotlinproject.base.BaseActivity
 import com.bj.kotlinproject.bean.FindBean
 import com.bj.kotlinproject.fragment.FindFragment
+import com.bj.kotlinproject.fragment.HomeFragment
+import com.bj.kotlinproject.fragment.HotFragment
 import com.bj.kotlinproject.fragment.MySelfFragment
 import com.bj.kotlinproject.presenter.FindPresenter
 import com.bj.kotlinproject.view.FindView
@@ -27,7 +29,7 @@ class MainActivity : BaseActivity<FindPresenter>(),FindView {
                 .setChangeColor(Color.BLACK, Color.DKGRAY)
                 .addTabItem("首页", R.mipmap.home_selected, R.mipmap.home_normal, HomeFragment::class.java)
                 .addTabItem("发现", R.mipmap.find_selected, R.mipmap.find_normal, FindFragment::class.java)
-                .addTabItem("热门", R.mipmap.hot_selected, R.mipmap.hot_normal, HomeFragment::class.java)
+                .addTabItem("热门", R.mipmap.hot_selected, R.mipmap.hot_normal, HotFragment::class.java)
                 .addTabItem("我的", R.mipmap.mine_selected, R.mipmap.mine_normal, MySelfFragment::class.java)
                 .isShowDivider(false)
                 .setOnTabChangeListener(object : TabHost.OnTabChangeListener, BottomTabBar.OnTabChangeListener {
