@@ -29,4 +29,8 @@ interface ApiService {
     //搜索http://baobab.kaiyanapp.com/api/v1/search?num=10&query=%E4%BD%A0&start=10
     @GET("v1/search")
     fun getSearchData(@Query("num")num:Int,@Query("query")query:String,@Query("start")start:Int) : Flowable<SearchBean>
+
+
+
+
 }

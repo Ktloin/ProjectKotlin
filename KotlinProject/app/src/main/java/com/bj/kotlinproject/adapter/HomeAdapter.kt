@@ -40,12 +40,12 @@ class HomeAdapter(context: Context, list: List<HomeBean.IssueListBean.ItemListBe
             icon = list?.get(position)?.data?.author?.icon
             title = list?.get(position)?.data?.title
         } else {
-            feed = list?.get(5)?.data?.cover?.feed
-            icon = list?.get(5)?.data?.author?.icon
-            title = list?.get(5)?.data?.title
+            feed = list?.get(6)?.data?.cover?.feed
+            icon = list?.get(6)?.data?.author?.icon
+            title = list?.get(6)?.data?.title
         }
         holder?.home_feed?.setImageURI(feed)
-        holder?.home_category?.text = "发布于 $category"
+        holder?.home_category?.text = title
         holder?.home_icon?.setImageURI(icon)
 
         holder?.home_feed?.setOnClickListener {
