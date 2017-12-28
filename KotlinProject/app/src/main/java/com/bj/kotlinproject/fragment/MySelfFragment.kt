@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.activity.GKActivity
 import com.bj.kotlinproject.activity.HCActivity
-import com.bj.kotlinproject.activity.SetActivity
 import com.bj.kotlinproject.activity.YJActivity
+import com.bj.kotlinproject.upload.MainActivity2
 import kotlinx.android.synthetic.main.fragment_myself.view.*
 
 /**
@@ -80,7 +80,7 @@ class MySelfFragment  :Fragment(){
         view.bai_set.setOnClickListener(object : DialogInterface.OnClickListener, View.OnClickListener {
             override fun onClick(v: View?) {
 
-                var intent = Intent(activity, SetActivity::class.java)
+                var intent = Intent(activity, MainActivity2::class.java)
                 startActivity(intent)
 
             }
