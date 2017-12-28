@@ -21,6 +21,7 @@ class YDActivity : AppCompatActivity() {
             if (what == 0) {
                 val intent = Intent(this@YDActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
 
         }
@@ -61,6 +62,10 @@ class YDActivity : AppCompatActivity() {
         }.start()
 
 
+
     }
+
+
+
 
 }

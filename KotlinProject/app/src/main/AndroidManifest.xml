@@ -30,7 +30,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".activity.SearchListActivity"></activity>
+=======
+        <activity android:name=".activity.HotDetailActivity"></activity>
+>>>>>>> 2173d3f5c5a2415999ca322392a9cfc435d42fe6
     </application>
 
 </manifest>

@@ -1,9 +1,11 @@
 package com.bj.kotlinproject.fragment
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.bj.kotlinproject.R
+import com.bj.kotlinproject.activity.HotDetailActivity
 import com.bj.kotlinproject.base.BaseFragment
 import com.bj.kotlinproject.bean.HotBean
 import com.bj.kotlinproject.presenter.HotPresenter
@@ -40,8 +42,23 @@ class RankFragment() : BaseFragment<HotPresenter>(),HotView {
         recyclerView.adapter = mAdapter
         mAdapter.setOniteClickListener(object : RankAdapter.OnItemClickLitener {
             override fun onItemClick(position: Int) {
+                val playUrl = hotBean.itemList!!.get(position).data!!.playUrl
+                val description = hotBean.itemList!!.get(position).data!!.description
+                val category = hotBean.itemList!!.get(position).data!!.category
+                val title = hotBean.itemList!!.get(position).data!!.title;
+                val feed = list!!.get(position)?.data?.cover?.feed
+                val blurred = list?.get(position)?.data?.cover?.blurred
                 Toast.makeText(activity,"我点击了"+position, Toast.LENGTH_LONG).show()
-
+                var intent= Intent()
+                intent.setClass(activity, HotDetailActivity::class.java)
+                intent.putExtra("playUrl",playUrl)
+                intent.putExtra("title",title)
+                intent.putExtra("description",description)
+                intent.putExtra("category",category)
+                intent.putExtra("position",position)
+                intent.putExtra("feed",feed)
+                intent.putExtra("blurred",blurred)
+                startActivity(intent)
             }
 
         })

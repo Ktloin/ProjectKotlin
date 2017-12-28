@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.astuetz.PagerSlidingTabStrip
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.adapter.HotAdatpter
@@ -23,6 +24,8 @@ class HotFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Fresco.initialize(activity)
         val view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_hot, container, false)
+        val textView = view.findViewById<TextView>(R.id.tvTitle) as TextView
+        textView.text="Ranking"
          tabStrip = view.findViewById<PagerSlidingTabStrip>(R.id.tabs_hot) as PagerSlidingTabStrip
          viewPager = view.findViewById<ViewPager>(R.id.vp_hot) as ViewPager
         initView()
