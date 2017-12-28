@@ -38,6 +38,7 @@ class RankAdapter(context: Context, list: List<HotBean.ItemListBean>) : Recycler
     override fun onBindViewHolder(holder: RankViewHolder?, position: Int) {
         holder?.iv_photo?.setImageURI(Uri.parse(list!!.get(position)?.data?.cover?.feed))
         holder?.tv_title?.text = list!!.get(position).data!!.title
+        holder?.tv_time?.text=list!!.get(position).data!!.category
         Log.i("XXX",list!!.get(position).data!!.title+"11111")
         holder?.ll_hot?.setOnClickListener{
             litener?.onItemClick(position)
