@@ -10,6 +10,7 @@ import com.astuetz.PagerSlidingTabStrip
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.adapter.HotAdatpter
 import com.facebook.drawee.backends.pipeline.Fresco
+import kotlinx.android.synthetic.main.title_bar.*
 
 /**
  * Created by 姚梦可 on 2017/12/27.
@@ -29,6 +30,7 @@ class HotFragment: Fragment() {
         return view
     }
      fun initView() {
+         tvTitle.text="Ranking"
         var weekFragment: RankFragment = RankFragment()
         var weekBundle = Bundle()
         weekBundle.putString("strategy", STRATEGY[0])
