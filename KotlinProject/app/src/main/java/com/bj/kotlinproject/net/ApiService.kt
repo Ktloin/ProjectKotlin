@@ -1,6 +1,7 @@
 package com.bj.kotlinproject.net
 
 import com.bj.kotlinproject.bean.FindBean
+import com.bj.kotlinproject.bean.FindListBean
 import io.reactivex.Flowable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -20,6 +21,6 @@ interface ApiService {
 
     //发现列表http://baobab.wandoujia.com/api/v3/videos?categoryName=时尚&strategy=date&udid=26868b32e808498db32fd51fb422d00175e179df&vc=83
     @GET("v3/videos")
-    fun getFindListData(@Query("categoryName")categoryName:String,@Query("strategy")strategy:String ,@Query("udid") udid:String ,@Query("vc") vc:Int)
+    fun getFindListData(@Query("categoryName")categoryName:String,@Query("strategy")strategy:String ,@Query("udid") udid:String ,@Query("vc") vc:Int) :Flowable<FindListBean>
 
 }
