@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.activity.FindListActivity
+import com.bj.kotlinproject.activity.SearchActivity
 import com.bj.kotlinproject.adapter.FindAdapter
 import com.bj.kotlinproject.base.BaseFragment
 import com.bj.kotlinproject.bean.FindBean
@@ -24,6 +25,13 @@ class FindFragment : BaseFragment<FindPresenter>(),FindView {
     override fun initView(view: View) {
         tvTitle.text="Discover"
         rv.layoutManager=GridLayoutManager(context,2)
+        ivBar.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                var intent=Intent()
+                intent.setClass(context,SearchActivity::class.java)
+                startActivity(intent)
+            }
+        })
 
     }
 

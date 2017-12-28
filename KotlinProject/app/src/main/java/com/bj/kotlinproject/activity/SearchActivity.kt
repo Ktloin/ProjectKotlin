@@ -38,8 +38,9 @@ class SearchActivity : BaseActivity<SearchPresenter>(),com.bj.kotlinproject.view
                     return
                 }
                 var intent=Intent()
-                //intent.setClass(this@SearchActivity,)
-
+                intent.setClass(this@SearchActivity,SearchListActivity::class.java)
+                intent.putExtra("keyword",keyWord)
+                startActivity(intent)
             }
         })
 

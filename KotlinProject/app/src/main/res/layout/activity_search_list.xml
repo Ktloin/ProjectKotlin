@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bj.kotlinproject.activity.FindListActivity">
+    tools:context="com.bj.kotlinproject.activity.SearchListActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,17 +22,16 @@
             android:background="@mipmap/ivback" />
 
         <TextView
-            android:id="@+id/textTitle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
+            android:id="@+id/textTitle"
             android:textColor="#000"
             android:textSize="16sp" />
     </LinearLayout>
-
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rlv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:id="@+id/search_rv"></android.support.v7.widget.RecyclerView>
 </LinearLayout>
