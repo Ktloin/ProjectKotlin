@@ -15,11 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".activity.HCActivity" />
@@ -29,7 +25,14 @@
         <activity android:name=".activity.FindListActivity" />
         <activity android:name=".activity.FindDetailActivity" />
         <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".activity.YDActivity"></activity>
+        <activity android:name=".activity.YDActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>
