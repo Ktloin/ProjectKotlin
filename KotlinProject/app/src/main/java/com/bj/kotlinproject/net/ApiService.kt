@@ -13,7 +13,7 @@ interface ApiService {
 
     //每日精选  http://baobab.wandoujia.com/api/v2/feed?num=2&udid=26868b32e808498db32fd51fb422d00175e179df&vc=83
     @GET("v2/feed")
-    fun getJXData(@Query("num") num: Int, @Query("udid") udid: String, @Query("vc") vc: Int): Flowable<List<HomeBean>>
+    fun getJXData(@Query("num") num: Int, @Query("udid") udid: String, @Query("vc") vc: Int): Flowable<HomeBean>
 
     //发现更多 http://baobab.wandoujia.com/api/v2/categories?udid=26868b32e808498db32fd51fb422d00175e179df&vc=83
     @GET("v2/categories")

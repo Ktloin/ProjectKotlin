@@ -8,13 +8,13 @@ import com.bj.kotlinproject.view.HomeView
 /**
  * Created by 吴丽杰 on 2017/12/27.
  */
-class HomePresenter(homeView: HomeView):OnFinish<List<HomeBean>> {
+class HomePresenter(homeView: HomeView):OnFinish<HomeBean> {
     var homeModel: HomeModel?= HomeModel()
     var homeView:HomeView?=homeView
     fun relevance(num:Int,udid:String,vc:Int){
         homeModel!!.getDate(this,num, udid, vc)
     }
-    override fun onSuccess(t: List<HomeBean>) {
+    override fun onSuccess(t: HomeBean) {
         homeView!!.getHomeData(t!!)
     }
 }

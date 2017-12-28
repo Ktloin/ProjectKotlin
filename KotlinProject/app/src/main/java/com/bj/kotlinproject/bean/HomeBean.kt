@@ -1,33 +1,66 @@
 package com.bj.kotlinproject.bean
 
 /**
- * Created by 吴丽杰 on 2017/12/27.
+ * Created by 吴丽杰 on 2017/12/28.
  */
 
+class HomeBean {
 
-data class HomeBean(var nextPageUrl: String?, var nextPublishTime: Long,
-                    var newestIssueType: String?, var dialog: Any?,
-                    var issueList: List<IssueListBean>?) {
 
-    data class IssueListBean(var releaseTime: Long, var type: String?,
-                             var date: Long, var publishTime: Long, var count: Int,
-                             var itemList: List<ItemListBean>?) {
+    var nextPageUrl: String? = null
+    var nextPublishTime: Long = 0
+    var newestIssueType: String? = null
+    var dialog: Any? = null
+    var issueList: List<IssueListBean>? = null
 
-        data class ItemListBean(var type: String?, var data: DataBean?, var tag: Any?) {
+    class IssueListBean {
 
-            data class DataBean(var dataType: String?, var id: Int, var title: String?,
-                                var description: String?, var image: String?, var actionUrl: String?,
-                                var adTrack: Any?, var isShade: Boolean,
-                                var label: Any?, var labelList: Any?, var header: Any?, var category: String?,
-                                var duration: Long?, var playUrl: String, var cover: CoverBean?, var author: AuthorBean?,
-                                var releaseTime: Long?, var consumption: ConsumptionBean?) {
-                data class CoverBean(var feed: String?, var detail: String?,
-                                     var blurred: String?, var sharing: String?, var homepage: String?) {}
 
-                data class ConsumptionBean(var collectionCount: Int, var shareCount: Int, var replyCount: Int) {
+        var releaseTime: Long = 0
+        var type: String? = null
+        var date: Long = 0
+        var publishTime: Long = 0
+        var count: Int = 0
+        var itemList: List<ItemListBean>? = null
+
+        class ItemListBean {
+
+
+            var type: String? = null
+            var data: DataBean? = null
+            var tag: Any? = null
+            var id: Int = 0
+            var adIndex: Int = 0
+
+            class DataBean {
+                var dataType: String? = null
+                var id: Int = 0
+                var title: String? = null
+                var description: String? = null
+                var image: String? = null
+                var actionUrl: String? = null
+                var adTrack: Any? = null
+                var shade: Boolean = false
+                var label: Any? = null
+                var labelList: Any? = null
+                var header: Any? = null
+
+                var playUrl: String? = null
+                var author: AuthorBean? = null
+                var cover: CoverBean? = null
+
+                class AuthorBean {
+                    var icon: String? = null
                 }
 
-                data class AuthorBean(var icon: String) {}
+                class CoverBean {
+                    var feed: String? = null
+                    var blurred: String? = null
+                    var detail: String? = null
+                    var homepage: String? = null
+                }
+
+
             }
         }
     }

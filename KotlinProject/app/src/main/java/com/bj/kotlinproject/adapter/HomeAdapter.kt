@@ -1,46 +1,74 @@
 package com.bj.kotlinproject.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.bean.HomeBean
+import com.facebook.drawee.view.SimpleDraweeView
 
-/**
- * Created by 吴丽杰 on 2017/12/27.
- */
-class HomeAdapter(context: Context, list: List<HomeBean>) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+
+class HomeAdapter(context: Context, list: List<HomeBean.IssueListBean.ItemListBean>) : RecyclerView.Adapter<HomeAdapter.MoHoder>() {
+    override fun getItemCount(): Int {
+        return list.size
+    }
+
     private var context: Context = context
-    private var list: List<HomeBean> = list
+    private var list: List<HomeBean.IssueListBean.ItemListBean> = list
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyViewHolder {
-        var view = LayoutInflater.from(context).inflate(R.layout.home_item, parent, false)
-        return MyViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MoHoder {
+        return MoHoder(LayoutInflater.from(context).inflate(R.layout.home_item, parent, false))
     }
+    override fun onBindViewHolder(holder: MoHoder?, position: Int) {
 
-    override fun onBindViewHolder(holder: MyViewHolder?, position: Int) {
+        var feed:String? = null
+        var title:String? = null
+        var category:String? = null
+        var icon:String? = null
         val bean = list?.get(position)
-    }
 
-    override fun getItemCount(): Int = list.size ?: 0
 
-    class MyViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        var tv_detail : TextView?= null
-        var tv_title : TextView ? = null
-        var tv_time : TextView ? = null
-        var iv_photo : ImageView? = null
-        var iv_user : ImageView ? = null
-        init {
-            tv_detail = itemView?.findViewById(R.id.ll_tv_detail) as TextView?
-            tv_title = itemView?.findViewById(R.id.ll_tv_title) as TextView?
-            iv_photo = itemView?.findViewById(R.id.ll_iv_photo) as ImageView?
-            iv_user =  itemView?.findViewById(R.id.ll_iv_user) as ImageView?
-            //tv_title?.typeface = Typeface.createFromAsset( "fonts/FZLanTingHeiS-DB1-GB-Regular.TTF")
+        if(position>0){
+            var bean = list.get(position)
 
+
+            feed = list?.get(position)?.data?.cover?.feed
+            icon = list?.get(position)?.data?.author?.icon
+            title=list?.get(position)?.data?.title
+        }else{
+            feed =list?.get(5)?.data?.cover?.feed
+            icon = list?.get(5)?.data?.author?.icon
+            title=list?.get(5)?.data?.title
+        }
+        holder?.home_feed?.setImageURI(Uri.parse(feed))
+        holder?.home_category?.text="发布于 $category"
+        holder?.home_icon?.setImageURI(Uri.parse(icon))
+
+        holder?.home_feed?.setOnClickListener{
+            litener?.onItemClick(position)
         }
     }
+
+    class MoHoder(itemview:View): RecyclerView.ViewHolder(itemview) {
+        var home_icon:SimpleDraweeView=itemview!!.findViewById(R.id.ll_iv_user)
+        var home_feed: SimpleDraweeView =itemview!!.findViewById(R.id.ll_iv_photo)
+
+        var home_category:TextView=itemview!!.findViewById(R.id.ll_tv_title)
+    }
+
+
+
+    interface OnItemClickLitener{
+        fun onItemClick(position : Int)
+    }
+    var litener:OnItemClickLitener?=null
+    fun setOniteClickListener(litener: OnItemClickLitener){
+        this.litener=litener
+    }
+
 }

@@ -13,13 +13,13 @@ import io.reactivex.subscribers.DisposableSubscriber
  * Created by 吴丽杰 on 2017/12/27.
  */
 class HomeModel {
-    fun getDate(onFinish: OnFinish<List<HomeBean>>, num: Int, udid: String, vc: Int) {
+    fun getDate(onFinish: OnFinish<HomeBean>, num: Int, udid: String, vc: Int) {
         val service = RetrofitUtil.getInstance()?.getApiService(Api.BASEURL, ApiService::class.java)
         val homeData = service!!.getJXData(num, udid, vc)
         homeData!!.subscribeOn(Schedulers.io())
                 ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribeWith(object : DisposableSubscriber<List<HomeBean>>() {
-                    override fun onNext(t: List<HomeBean>?) {
+                ?.subscribeWith(object : DisposableSubscriber<HomeBean>() {
+                    override fun onNext(t: HomeBean) {
                         onFinish.onSuccess(t!!)
                     }
                     override fun onComplete() {
