@@ -2,6 +2,7 @@ package com.tt.lvruheng.eyepetizer.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +15,9 @@ import com.bj.kotlinproject.bean.HotBean
 /**
  * Created by lvruheng on 2017/7/7.
  */
-class RankAdapter(context: Context, list: List<HotBean>) : RecyclerView.Adapter<RankAdapter.RankViewHolder>() {
+class RankAdapter(context: Context, list: List<HotBean.ItemListBean>) : RecyclerView.Adapter<RankAdapter.RankViewHolder>() {
     var context: Context? = null;
-    var list: List<HotBean>? = null
+    var list: List<HotBean.ItemListBean>? = null
     var inflater: LayoutInflater? = null
 
     init {
@@ -34,8 +35,9 @@ class RankAdapter(context: Context, list: List<HotBean>) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: RankViewHolder?, position: Int) {
-        val dataBean = list?.get(0)?.itemList?.get(position)?.data
-        holder?.tv_title?.text = dataBean?.title
+       // holder?.iv_photo?.setImageURI(Uri.parse(list!!.get(position).data!!.title))
+        holder?.tv_title?.text = list!!.get(position).data!!.cover!!.detail
+        Log.i("XXX",list!!.get(position).data!!.title+"11111")
         holder?.ll_hot?.setOnClickListener{
             litener?.onItemClick(position)
         }

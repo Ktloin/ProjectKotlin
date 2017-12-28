@@ -34,8 +34,9 @@ class RankFragment() : BaseFragment<HotPresenter>(),HotView {
             presenter!!.relevance(mStrategy)
         }
     }
-    override fun getHotData(hotBean: List<HotBean>) {
-        var mAdapter = RankAdapter(context, hotBean)
+    override fun getHotData(hotBean: HotBean) {
+        val list = hotBean.itemList
+        var mAdapter = RankAdapter(context, list!!)
         recyclerView.adapter = mAdapter
         mAdapter.setOniteClickListener(object : RankAdapter.OnItemClickLitener {
             override fun onItemClick(position: Int) {
