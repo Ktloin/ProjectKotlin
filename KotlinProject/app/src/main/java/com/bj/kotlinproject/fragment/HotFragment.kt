@@ -1,14 +1,17 @@
 package com.bj.kotlinproject.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.astuetz.PagerSlidingTabStrip
 import com.bj.kotlinproject.R
+import com.bj.kotlinproject.activity.SearchActivity
 import com.bj.kotlinproject.adapter.HotAdatpter
 import com.facebook.drawee.backends.pipeline.Fresco
 
@@ -25,7 +28,16 @@ class HotFragment: Fragment() {
         Fresco.initialize(activity)
         val view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_hot, container, false)
         val textView = view.findViewById<TextView>(R.id.tvTitle) as TextView
+        val ImageView = view.findViewById<ImageView>(R.id.ivBar) as ImageView
         textView.text="Ranking"
+        ImageView.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                var intent= Intent()
+                intent.setClass(context, SearchActivity::class.java)
+                startActivity(intent)
+            }
+
+        })
          tabStrip = view.findViewById<PagerSlidingTabStrip>(R.id.tabs_hot) as PagerSlidingTabStrip
          viewPager = view.findViewById<ViewPager>(R.id.vp_hot) as ViewPager
         initView()
