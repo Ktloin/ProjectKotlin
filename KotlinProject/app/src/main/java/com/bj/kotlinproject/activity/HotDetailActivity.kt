@@ -1,5 +1,6 @@
 package com.bj.kotlinproject.activity
 
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -17,13 +18,15 @@ class HotDetailActivity : AppCompatActivity() {
         val title = intent.getStringExtra("title")
         val category = intent.getStringExtra("category")
         val description = intent.getStringExtra("description")
+        val feed = intent.getStringExtra("feed")
+        val blurred = intent.getStringExtra("blurred")
         Log.i("aaa","playUrl:"+playUrl+"==========title:"+title+"==========category"+category+"==========description"+description)
         videoplayer_hot.setUp(playUrl, JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL, "")
         videoplayer_hot.thumbImageView.setImageResource(R.mipmap.landing_background)
         title_hot.text=title
         category_hot.text=category
         description_hot.text=description
-        //sdv_hot.setImageURI(Uri.parse())
+        sdv_hot.setImageURI(Uri.parse(blurred))
     }
     override fun onDestroy() {
         super.onDestroy()
