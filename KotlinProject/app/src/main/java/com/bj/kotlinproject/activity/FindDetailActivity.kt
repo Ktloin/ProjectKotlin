@@ -12,11 +12,9 @@ import kotlinx.android.synthetic.main.activity_find_detail.*
 
 class FindDetailActivity : BaseActivity<FindListPresenter>(),FindListView {
 
-
     override fun layoutId(): Int= R.layout.activity_find_detail
 
     override fun initView() {
-
 
     }
     override fun initData() {
