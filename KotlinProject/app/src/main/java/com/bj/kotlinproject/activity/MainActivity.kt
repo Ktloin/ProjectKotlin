@@ -6,7 +6,6 @@ import com.bj.kotlinproject.R
 import com.bj.kotlinproject.base.BaseActivity
 import com.bj.kotlinproject.bean.FindBean
 import com.bj.kotlinproject.fragment.FindFragment
-import com.bj.kotlinproject.fragment.HomeFragment
 import com.bj.kotlinproject.fragment.MySelfFragment
 import com.bj.kotlinproject.presenter.FindPresenter
 import com.bj.kotlinproject.view.FindView

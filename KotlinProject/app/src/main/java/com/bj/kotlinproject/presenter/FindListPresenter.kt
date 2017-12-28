@@ -11,7 +11,7 @@ import com.bj.kotlinproject.view.FindListView
 class FindListPresenter(findListView: FindListView):OnFinish<FindListBean> {
 
     var findListModel:FindListModel= FindListModel()
-    var findListView:FindListView=findListView
+    var findListView: FindListView =findListView
     fun relevance(categoryName:String ,strategy:String,udid:String ,vc:Int){
         findListModel.getData(this,categoryName,strategy,udid,vc)
     }
