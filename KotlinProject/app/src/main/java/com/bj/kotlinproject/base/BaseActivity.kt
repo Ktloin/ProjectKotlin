@@ -9,6 +9,7 @@ abstract class BaseActivity<T> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId())
+
         initView()
         initData()
         presenter=getPresenter()

@@ -1,6 +1,8 @@
 package com.bj.kotlinproject.activity
 
 import android.graphics.Color
+import android.os.Build
+import android.view.WindowManager
 import android.widget.TabHost
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.base.BaseActivity
@@ -21,7 +23,11 @@ class MainActivity : BaseActivity<FindPresenter>(),FindView {
     override fun layoutId(): Int = R.layout.activity_main
 
     override fun initView() {
-
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+            var vindow=window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.statusBarColor=resources.getColor(Color.BLUE)
+        }
         bottom_tab_bar.init(supportFragmentManager)
                 .setImgSize(50F, 50F)
                 .setFontSize(12F)
