@@ -1,11 +1,9 @@
 package com.bj.kotlinproject.fragment
 
-import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.bj.kotlinproject.R
-import com.bj.kotlinproject.activity.HotDetailActivity
 import com.bj.kotlinproject.base.BaseFragment
 import com.bj.kotlinproject.bean.HotBean
 import com.bj.kotlinproject.presenter.HotPresenter
@@ -46,16 +44,15 @@ class RankFragment() : BaseFragment<HotPresenter>(),HotView {
                 val description = hotBean.itemList!!.get(position).data!!.description
                 val category = hotBean.itemList!!.get(position).data!!.category
                 val title = hotBean.itemList!!.get(position).data!!.title;
-                //hotBean.itemList.get(position).data.
                 Toast.makeText(activity,"我点击了"+position, Toast.LENGTH_LONG).show()
-                var intent= Intent()
+               /* var intent= Intent()
                 intent.setClass(activity, HotDetailActivity::class.java)
                 intent.putExtra("playUrl",playUrl)
                 intent.putExtra("title",title)
                 intent.putExtra("description",description)
                 intent.putExtra("category",category)
                 intent.putExtra("position",position)
-                startActivity(intent)
+                startActivity(intent)*/
             }
 
         })
