@@ -28,7 +28,8 @@
         <activity android:name=".activity.SetActivity" />
         <activity android:name=".activity.FindListActivity" />
         <activity android:name=".activity.FindDetailActivity" />
-        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.YDActivity"></activity>
     </application>
 
 </manifest>

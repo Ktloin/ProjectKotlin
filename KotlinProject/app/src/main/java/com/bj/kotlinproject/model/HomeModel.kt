@@ -2,6 +2,7 @@ package com.bj.kotlinproject.model
 
 import com.bj.kotlinproject.bean.HomeBean
 import com.bj.kotlinproject.net.Api
+import com.bj.kotlinproject.net.ApiService
 import com.bj.kotlinproject.net.OnFinish
 import com.bj.kotlinproject.net.RetrofitUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
