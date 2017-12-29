@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.bean.SearchBean
@@ -28,6 +29,9 @@ class SearchListAdapter(context: Context, itemList: List<SearchBean.ItemListBean
         holder?.sdv?.setImageURI(itemList!!.get(position).data!!.cover!!.feed)
         holder?.tvTitle?.text=""+itemList!!.get(position).data!!.title
         holder?.tvType?.text=itemList!!.get(position).data!!.category
+        holder?.lin!!.setOnClickListener({
+            litener!!.click(position)
+        })
     }
 
 
@@ -37,5 +41,14 @@ class SearchListAdapter(context: Context, itemList: List<SearchBean.ItemListBean
         var sdv = itemView!!.findViewById<SimpleDraweeView>(R.id.sdv) as SimpleDraweeView
         var tvTitle = itemView!!.findViewById<TextView>(R.id.tvTilte) as TextView
         var tvType = itemView!!.findViewById<TextView>(R.id.tvType) as TextView
+        var lin=itemView!!.findViewById<LinearLayout>(R.id.lin) as LinearLayout
+    }
+
+    var litener:OnLitener?=null
+    interface OnLitener{
+        fun click(position:Int)
+    }
+    fun setOnLitener(litener:OnLitener){
+        this.litener=litener
     }
 }

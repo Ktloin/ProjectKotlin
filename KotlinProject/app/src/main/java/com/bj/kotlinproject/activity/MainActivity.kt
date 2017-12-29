@@ -1,8 +1,6 @@
 package com.bj.kotlinproject.activity
 
 import android.graphics.Color
-import android.os.Build
-import android.view.WindowManager
 import android.widget.TabHost
 import com.bj.kotlinproject.R
 import com.bj.kotlinproject.base.BaseActivity
@@ -14,6 +12,7 @@ import com.bj.kotlinproject.fragment.MySelfFragment
 import com.bj.kotlinproject.presenter.FindPresenter
 import com.bj.kotlinproject.view.FindView
 import com.hjm.bottomtabbar.BottomTabBar
+import com.jaeger.library.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity<FindPresenter>(),FindView {
@@ -23,11 +22,13 @@ class MainActivity : BaseActivity<FindPresenter>(),FindView {
     override fun layoutId(): Int = R.layout.activity_main
 
     override fun initView() {
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
+        /*if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             var vindow=window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
             window.statusBarColor=resources.getColor(Color.BLUE)
-        }
+        }*/
+        //目的是让状态栏全透明
+        StatusBarUtil.setTranslucent(this,15)
         bottom_tab_bar.init(supportFragmentManager)
                 .setImgSize(50F, 50F)
                 .setFontSize(12F)

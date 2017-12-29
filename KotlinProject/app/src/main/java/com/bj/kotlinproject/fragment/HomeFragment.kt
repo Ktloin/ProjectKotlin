@@ -4,10 +4,8 @@ package com.bj.kotlinproject.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,17 +13,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bj.kotlinproject.R
-import com.bj.kotlinproject.activity.FindDetailActivity
 import com.bj.kotlinproject.activity.HomeDetaiActivity
 import com.bj.kotlinproject.activity.SearchActivity
 import com.bj.kotlinproject.adapter.HomeAdapter
-import com.bj.kotlinproject.base.BaseFragment
 import com.bj.kotlinproject.bean.HomeBean
 import com.bj.kotlinproject.model.HomeModel
 import com.bj.kotlinproject.presenter.HomePresenter
 import com.bj.kotlinproject.view.HomeView
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.title_bar.*
 
 /**
  * Created by 郑文杰 on 2017/12/27.
@@ -52,9 +47,9 @@ class HomeFragment<T : HomeModel> : Fragment(), HomeView {
     }
 
     override fun getHomeData(homeBean: HomeBean) {
-        val itemList = homeBean.issueList!!.get(0).itemList!!
-        val homeAdpterr = HomeAdapter(activity, itemList)
-        var linearLayoutManager = LinearLayoutManager(activity)
+        var itemList = homeBean.issueList!!.get(0).itemList!!
+        var homeAdpterr = HomeAdapter(activity, itemList)
+        var linearLayoutManager = LinearLayoutManager(context)
         ll_rlv.setLayoutManager(linearLayoutManager)
         ll_rlv.adapter = homeAdpterr
 
@@ -62,19 +57,39 @@ class HomeFragment<T : HomeModel> : Fragment(), HomeView {
         homeAdpterr.setOniteClickListener(object : HomeAdapter.OnItemClickLitener {
             override fun onItemClick(position: Int) {
 
-                val playUrl = itemList.get(position).data!!.playUrl
-                val description = itemList.get(position).data!!.description
-                val title = itemList.get(position).data!!.title
-                //val blurred = itemList.get(position).data!!.cover!!.blurred
-                //val feed = itemList.get(position).data!!.cover!!.feed
-                var intent: Intent = Intent()
-                intent.setClass(context, HomeDetaiActivity::class.java)
-                intent.putExtra("playUrls", playUrl)
-                intent.putExtra("descriptions", description)
-                //intent.putExtra("feeds", feed)
-                intent.putExtra("titles", title)
-                //intent.putExtra("blurreds", blurred)
-                startActivity(intent)
+                if (position==0){
+                    val playUrl = itemList.get(position+3).data!!.playUrl
+                    var play=itemList.get(position+3).data!!.playUrl
+                    var blurred = itemList.get(position+3).data!!.cover!!.blurred
+                    var feed = itemList.get(position+3).data!!.cover!!.feed
+                    var description=itemList.get(position+3).data!!.description
+                    var title=itemList.get(position+3).data!!.title
+                    var intent=Intent()
+                    intent.setClass(context, HomeDetaiActivity::class.java)
+                    intent.putExtra("play",play)
+                    intent.putExtra("blurred",blurred)
+                    intent.putExtra("feed",feed)
+                    intent.putExtra("descriptions", description)
+                    intent.putExtra("title",title)
+                    startActivity(intent)
+                    Toast.makeText(context,"点击"+position+playUrl,Toast.LENGTH_LONG).show()
+
+                }else{
+                    val playUrl = itemList.get(position).data!!.playUrl
+                    var play=itemList.get(position).data!!.playUrl
+                    var blurred = itemList.get(position).data!!.cover!!.blurred
+                    var feed = itemList.get(position).data!!.cover!!.feed
+                    var description=itemList.get(position).data!!.description
+                    var title=itemList.get(position).data!!.title
+                    var intent=Intent()
+                    intent.setClass(context, HomeDetaiActivity::class.java)
+                    intent.putExtra("play",play)
+                    intent.putExtra("blurred",blurred)
+                    intent.putExtra("feed",feed)
+                    intent.putExtra("descriptions", description)
+                    intent.putExtra("title",title)
+                    startActivity(intent)
+                }
             }
         })
     }

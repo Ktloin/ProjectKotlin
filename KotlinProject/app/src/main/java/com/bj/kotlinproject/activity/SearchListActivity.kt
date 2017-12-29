@@ -1,5 +1,6 @@
 package com.bj.kotlinproject.activity
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.bj.kotlinproject.R
@@ -20,7 +21,6 @@ class SearchListActivity : BaseActivity<SearchPresenter>(), com.bj.kotlinproject
                 finish()
             }
         })
-
     }
 
     override fun getPresenter(): SearchPresenter {
@@ -38,6 +38,22 @@ class SearchListActivity : BaseActivity<SearchPresenter>(), com.bj.kotlinproject
         val itemList = searchBean.itemList
         var adapter=SearchListAdapter(this,itemList)
         search_rv.adapter=adapter
+        adapter.setOnLitener(object :SearchListAdapter.OnLitener{
+            override fun click(position: Int) {
+                var intent=Intent()
+                intent.setClass(this@SearchListActivity,SearchDetailActivity::class.java)
+                var playUrl = searchBean.itemList!!.get(position).data!!.playUrl
+                val title = searchBean.itemList!!.get(position).data!!.title
+                val description = searchBean.itemList!!.get(position).data!!.description
+                val feed = searchBean.itemList!!.get(position).data!!.cover!!.feed
+
+                intent.putExtra("playUrl",playUrl)
+                intent.putExtra("description",description)
+                intent.putExtra("feed",feed)
+                intent.putExtra("title",title)
+                startActivity(intent)
+            }
+        })
     }
 
 }

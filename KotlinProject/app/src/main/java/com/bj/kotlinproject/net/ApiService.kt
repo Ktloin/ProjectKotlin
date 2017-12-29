@@ -30,7 +30,4 @@ interface ApiService {
     @GET("v1/search")
     fun getSearchData(@Query("num")num:Int,@Query("query")query:String,@Query("start")start:Int) : Flowable<SearchBean>
 
-
-
-
 }
