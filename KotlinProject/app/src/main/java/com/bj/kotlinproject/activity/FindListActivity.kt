@@ -9,6 +9,7 @@ import com.bj.kotlinproject.base.BaseActivity
 import com.bj.kotlinproject.bean.FindListBean
 import com.bj.kotlinproject.presenter.FindListPresenter
 import com.bj.kotlinproject.view.FindListView
+import com.umeng.analytics.MobclickAgent
 import kotlinx.android.synthetic.main.activity_find_list.*
 
 class FindListActivity : BaseActivity<FindListPresenter>(),FindListView {
@@ -43,6 +44,7 @@ class FindListActivity : BaseActivity<FindListPresenter>(),FindListView {
         rlv.adapter=adapter
         adapter.setOnItemClickListener(object : FindListAdapter.OnItemClickLitener{
             override fun OnItemClick(position: Int) {
+                MobclickAgent.onEvent(this@FindListActivity, "click_bt");
                 val playUrl = itemList!!.get(position)!!.data!!.playUrl
                 val category = itemList!!.get(position)!!.data!!.category
                 var intent=Intent()

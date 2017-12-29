@@ -1,5 +1,7 @@
 package com.bj.kotlinproject.activity
 
+import android.view.View
+import android.widget.Toast
 import cn.jzvd.JZVideoPlayer
 import cn.jzvd.JZVideoPlayerStandard
 import com.bj.kotlinproject.R
@@ -36,6 +38,13 @@ class FindDetailActivity : BaseActivity<FindListPresenter>(),FindListView {
         sdv.setImageURI(findListBean.itemList!!.get(position)!!.data!!.cover!!.blurred)
         tvTitle.text=findListBean.itemList!!.get(position)!!.data!!.title
         tvMark.text=findListBean.itemList!!.get(position)!!.data!!.remark
+
+        cache.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                Toast.makeText(this@FindDetailActivity,"开始下载",Toast.LENGTH_LONG).show()
+
+            }
+        })
 
     }
 
